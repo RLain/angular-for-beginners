@@ -34,3 +34,21 @@ https://www.codecademy.com/article/mvc
 - **View**: View code is made up of all the functions that directly interact with the user. This is the code that makes your app look nice, and otherwise defines how your user sees and interacts with it. 
 
 - **Controller**: Controller code acts as a liaison between the Model and the View, receiving user input and deciding what to do with it. It’s the brains of the application, and ties together the model and the view.
+
+------------------------
+
+## Features
+
+- The main feature of Angular Core is the ability of `defining our own custom HTML elements`. This allows us to extend the browser functionality with our own functionality.
+- The second key feature is the ability to build our program in a way where our `data, available at the Component level, and the View definined at the HTML template are completely separate and can be bound together (binding)`.
+
+
+------------------------
+
+## Syntax
+
+{{ word }} = Interpolation syntax and allows us to access the data in the View. Javascript expression that will be evaluted in the context of the Component class. This is a binding expression. This syntax can also extract values from an object defined on the Component e.g. {{ data.title }}
+
+
+
+
