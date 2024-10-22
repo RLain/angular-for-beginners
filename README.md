@@ -50,5 +50,7 @@ https://www.codecademy.com/article/mvc
 {{ word }} = Interpolation syntax and allows us to access the data in the View. Javascript expression that will be evaluted in the context of the Component class. This is a binding expression. This syntax can also extract values from an object defined on the Component e.g. {{ data.title }}
 
 
+⏭️ Resume at https://angular-university.io/lesson/angular-beginners-why-angular
+
 
 
