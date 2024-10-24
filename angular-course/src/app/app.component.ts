@@ -6,8 +6,17 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-course';
+  title = '<h1>angular-course</h1>';
+
+  onImageClicked() {
+    console.log('Reached onImageClicked')
+    alert('Hello world')
+  }
+
+  onKeyUp(newTitle: HTMLInputElement) {
+    this.title = String(newTitle.value)
+  }
 }
