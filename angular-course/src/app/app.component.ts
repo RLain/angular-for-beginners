@@ -1,22 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {COURSES} from '../db-data';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = '<h1>angular-course</h1>';
 
-  onImageClicked() {
-    console.log('Reached onImageClicked')
-    alert('Hello world')
-  }
 
-  onKeyUp(newTitle: HTMLInputElement) {
-    this.title = String(newTitle.value)
-  }
+
 }

@@ -1,6 +1,7 @@
 # Angular for Beginners
 
-https://angular-university.io/lesson/angular-beginners-course-kickoff
+• https://angular-university.io/lesson/angular-beginners-course-kickoff
+• https://github.com/angular-university/angular-course/tree/master
 
 ## Set up 
 - Have Node.js
@@ -37,6 +38,14 @@ https://www.codecademy.com/article/mvc
 
 ------------------------
 
+## Commands
+
+• $ `ng new name-of-project` = spins up a new project skeleton including .gitignore, node, tsconfigs etc.
+• $ `ng generate component name-of-component` = creates a new component including html/css/spec.ts/ts
+
+
+------------------------
+
 ## Features
 
 - The main feature of Angular Core is the ability of `defining our own custom HTML elements`. This allows us to extend the browser functionality with our own functionality.
@@ -50,7 +59,32 @@ https://www.codecademy.com/article/mvc
 {{ word }} = Interpolation syntax and allows us to access the data in the View. Javascript expression that will be evaluted in the context of the Component class. This is a binding expression. This syntax can also extract values from an object defined on the Component e.g. {{ data.title }}
 
 
-⏭️ Resume at https://angular-university.io/lesson/angular-beginners-why-angular
+### Binding
+
+In Angular, a binding creates a dynamic connection between a component's template and its data. This connection ensures that changes to the component's data automatically update the rendered template.
+
+- value="Test" is a plain string
+- [value]="data.title"  will bind the path defined on the component
+- [value]="'Plain string'" (note the single contained quotes) will render a plain string. But rather use the first example value="Plain string"
+- <input class="demo" [value]="title" #titleInput/> the #titleInput is the name of the input box. This is called a Template Reference, and we can now refer to this reference at other parts of the template.
+
+
+💡 Template references and live updates of information on the website is one of the most important features of the Angular Core module. Automatically reflecting in the view, any modification of the data. This is a type of `change detection`.
+
+### Security
+
+The following are native Angular security features:
+
+- Angular does `HTML escaping`, meaning if someone tries to inject HTML into the website, the HTML will directly render as tags, opposed to functionally changing the design. To test, on the `title` value, inside the app.component.ts update the value to   title = '<h1>angular-course</h1>'.  If an attacker tries to inject a <script> the same thing happens. The HTML is escaped and the raw HTML of the script is rendered. 
 
 
 
+### DOM: Element - Events
+
+Element is the most general base class from which all element objects (i.e. objects that represent elements) in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element.
+
+You can add listeners for any native events, such as: click, keydown, mouseover, etc. Check out the all available events on [elements on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element#events).
+
+
+
+⏭️ Resume at https://angular-university.io/lesson/angular-beginners-components-new-section
