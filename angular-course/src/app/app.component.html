@@ -1,17 +1,25 @@
-<div class="top-menu">
+<div>
+  <div class="top-menu">
+    <img
+      class="logo"
+      src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
+    />
+  </div>
 
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+  <div class="courses">
+    <course-card
+      (courseSelected)="courseSelected($event)"
+      [course]="coreCourse"
+    ></course-card>
 
+    <course-card
+      (courseSelected)="courseSelected($event)"
+      [course]="rxjsCourse"
+    ></course-card>
+
+    <course-card
+      (courseSelected)="courseSelected($event)"
+      [course]="ngrxCourse"
+    ></course-card>
+  </div>
 </div>
-
-
-<div class="courses">
-    <course-card [course]="coreCourse"></course-card>
-
-    <course-card [course]="rxjsCourse"></course-card>
-
-    <course-card [course]="ngrxCourse"></course-card>
-</div>
-
-
