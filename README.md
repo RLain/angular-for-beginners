@@ -87,4 +87,4 @@ You can add listeners for any native events, such as: click, keydown, mouseover,
 
 
 
-⏭️ Resume at https://angular-university.io/lesson/angular-beginners-components-new-section
+⏭️ Resume at https://angular-university.io/lesson/angular-beginners-component-outputs

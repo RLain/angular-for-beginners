@@ -9,6 +9,8 @@ import { Course } from '../model/course';
   styleUrl: './course-card.component.css'
 })
 export class CourseCardComponent {
-  @Input() course: Course
+  @Input({
+    required: true
+  }) course: Course
 
 }
