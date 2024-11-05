@@ -78,7 +78,7 @@ In Angular, a binding creates a dynamic connection between a component's templat
 
 The following are native Angular security features:
 
-- Angular does `HTML escaping`, meaning if someone tries to inject HTML into the website, the HTML will directly render as tags, opposed to functionally changing the design. To test, on the `title` value, inside the app.component.ts update the value to   title = '<h1>angular-course</h1>'.  If an attacker tries to inject a <script> the same thing happens. The HTML is escaped and the raw HTML of the script is rendered. 
+- Angular does `HTML escaping`, meaning if someone tries to inject HTML into the website, the HTML will directly render as tags, opposed to functionally changing the design. To test, on the `title` value, inside the app.component.ts update the value to   title = `<h1>angular-course</h1>`.  If an attacker tries to inject a <script> the same thing happens. The HTML is escaped and the raw HTML of the script is rendered. 
 
 
 
