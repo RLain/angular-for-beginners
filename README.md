@@ -121,4 +121,4 @@ b. Inside the html `[index]="$index"`. No let statement required.
 
 
 
-⏭️ Resume at https://angular-university.io/lesson/angular-beginners-component-outputs
+⏭️ Resume at https://angular-university.io/lesson/angular-beginners-whats-next-ngfor
