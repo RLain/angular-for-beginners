@@ -100,7 +100,7 @@ In Angular, a binding creates a dynamic connection between a component's templat
 
 🔗 https://angular.dev/api/core/@for
 
-Note that the tracking function is mandatory ergo @for(x of y, track x.key). This is a safer developer experience to handle the removal/addition/change of element positions. Ensure the track expression is effectively used to identify each item `uniquely` e.g. by using ids/uuids etc. You can also write custom functions and invoke using `track functionName`.
+Note that the tracking function is mandatory ergo @for(x of y, track x.key). This is a safer developer experience to handle the removal/addition/change of element positions. Ensure the track expression is effectively used to identify each item `uniquely` e.g. by using ids/uuids etc. You can also write custom functions and invoke using `track functionName`. If you don't have a unique identifier in your array, as a last resort use `track $index`. Not as efficient for Angular but will resolve compilation errors. Best practise is to have a unique identifier.
 
 Used in conjunction with `@empty` as a fallback.
 
@@ -118,9 +118,6 @@ The following are useful for styling
 💡 Note that `let` is needed for the extra options, but not for the main looping variable. With these additional options you can either do:
 a. `let index = $index` then in the HTML = `[index]="index"`, this allows you to create aliases e.g. let indx = $index, or simply
 b. Inside the html `[index]="$index"`. No let statement required.
-
-
-
 
 
 
