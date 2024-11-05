@@ -67,7 +67,10 @@ In Angular, a binding creates a dynamic connection between a component's templat
 - [value]="data.title"  will bind the path defined on the component
 - [value]="'Plain string'" (note the single contained quotes) will render a plain string. But rather use the first example value="Plain string"
 - <input class="demo" [value]="title" #titleInput/> the #titleInput is the name of the input box. This is called a Template Reference, and we can now refer to this reference at other parts of the template.
-- `@Input()` has three methods: required, alias and transform e.g.  @Input({ required: true }). This is good to use as it is better to get a compilation error, opposed to a run-time error.
+- `@Input()` has three methods: required, alias and transform e.g. `@Input({ required: true })`. This is good to use as it is better to get a compilation error, opposed to a run-time error.
+- `@Output()` & `EventEmitter`: Use EventEmitter in components with the @Output directive to emit custom events synchronously or asynchronously, and register handlers for those events by subscribing to an instance.
+    - `$event` access the `event` object with the $event argument passed to the output event handler. e.g. `(courseSelected)="courseSelected($event)"`
+
 
 💡 Template references and live updates of information on the website is one of the most important features of the Angular Core module. Automatically reflecting in the view, any modification of the data. This is a type of `change detection`.
 

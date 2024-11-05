@@ -14,7 +14,7 @@ export class CourseCardComponent {
 
   courseViewed() {
     this.courseSelected.emit(this.course)
-    console.log('Coure viewed', this.course)
+    console.log('Course viewed', this.course)
 
   }
 
