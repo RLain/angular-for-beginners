@@ -2,3 +2,26 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+.course-card img {
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.course-card.is-first {
+  border-top: 2px solid grey;
+  padding-top: 20px;
+}
+
+.course-card.is-last {
+  border-top: 2px solid grey;
+  padding-top: 20px;
+}
+
+.course-card.is-even {
+  background: lightgray;
+}
+
+.course-card.is-odd {
+  background: lightcyan;
+}
