@@ -24,4 +24,9 @@ export class CourseCardComponent {
     return this.course && this.course.iconUrl
   }
 
+  cardClasses() {
+    if (this.course.category === "BEGINNER") {
+      return ['beginner'] // We can also return the string directly
+    }
+  }
 }

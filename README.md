@@ -125,7 +125,7 @@ This is the predecessor to @for.
 
 Comparison:
 
-```
+```html
     <course-card *ngFor="let course of courses; index as i; first as isFirst"
       [class.is-first]="isFirst"
       [course]="course"
@@ -134,7 +134,7 @@ Comparison:
     ></course-card>
 ```
 
-```
+```html
     @for (course of courses; track course.id;){
     <course-card
       [class.is-first]="$first"
@@ -153,6 +153,8 @@ Comparison:
 
 🔗 https://angular.dev/api/core/@if
 
+This is less verbose that ngIf and more intuitive with no need for imports (immediately available for use).
+
 Very similar to Javascript:
 - if
 - else if 
@@ -165,7 +167,7 @@ This is the predecessor to @if.
 
 Comparison:
 
-```
+```html
   <img alt="Angular Logo" *ngIf="course.iconUrl; else noImage" [src]="course.iconUrl" width="300" />
 
     <ng-template #noImage>
@@ -173,7 +175,7 @@ Comparison:
     </ng-template>
 ```
 
-```
+```html
  @if(course.iconUrl){
     <img
     width="300"
@@ -187,5 +189,43 @@ Comparison:
   ```
 
 
+#### [ngClass]
 
-⏭️ Resume at https://angular-university.io/lesson/angular-beginners-whats-next-ngfor
+🔗 https://angular.dev/api/common/NgClass?tab=description
+
+Adds and removes CSS classes (styles) on an HTML element, depending on the content of the data.
+Not meant to replace the class="" property, so if the styles are constant do use this.
+
+Basic:
+
+```html
+<div class="course-card" *ngIf="course"
+  [ngClass]="beginner">
+```
+
+More advanced:
+
+```html
+<div class="course-card" [ngClass]="cardClasses()">
+```
+
+
+```ts
+  cardClasses() {
+    return {
+      'beginner': this.course.category === "BEGINNER",
+      'course-card': true
+    }
+  }
+
+  // Alternative
+
+  cardClasses() {
+    if (this.course.category === "BEGINNER") {
+      return ['beginner'] // We can also return the string directly
+    }
+  }
+  ```
+
+
+⏭️ Resume at xxx

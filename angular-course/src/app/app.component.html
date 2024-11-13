@@ -7,13 +7,6 @@
   </div>
 
   <div class="courses">
-    <course-card *ngFor="let course of courses; index as i;"
-    [class.is-first]="$first"
-    [course]="course"
-    (courseSelected)="courseSelected($event)"
-    [index]="i + 1"
-  ></course-card>
-
     @for (course of courses; track course.id;){
     <course-card
       [class.is-first]="$first"
