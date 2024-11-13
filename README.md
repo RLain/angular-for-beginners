@@ -119,6 +119,73 @@ The following are useful for styling
 a. `let index = $index` then in the HTML = `[index]="index"`, this allows you to create aliases e.g. let indx = $index, or simply
 b. Inside the html `[index]="$index"`. No let statement required.
 
+##### *ngFor
+
+This is the predecessor to @for. 
+
+Comparison:
+
+```
+    <course-card *ngFor="let course of courses; index as i; first as isFirst"
+      [class.is-first]="isFirst"
+      [course]="course"
+      (courseSelected)="courseSelected($event)"
+      [index]="i + 1"
+    ></course-card>
+```
+
+```
+    @for (course of courses; track course.id;){
+    <course-card
+      [class.is-first]="$first"
+      [course]="course"
+      [index]="$index"
+      (courseSelected)="courseSelected($event)"
+    ></course-card>
+    }
+    @empty{
+      <h1>No courses exist</h1>
+    }
+```
+
+
+#### @if
+
+🔗 https://angular.dev/api/core/@if
+
+Very similar to Javascript:
+- if
+- else if 
+- else
+
+##### *ngIf
+
+This is the predecessor to @if.
+
+
+Comparison:
+
+```
+  <img alt="Angular Logo" *ngIf="course.iconUrl; else noImage" [src]="course.iconUrl" width="300" />
+
+    <ng-template #noImage>
+      <p>No image is available</p>
+    </ng-template>
+```
+
+```
+ @if(course.iconUrl){
+    <img
+    width="300"
+    alt="Angular Logo"
+    [src]="course.iconUrl"
+  />
+  }
+  @else{
+    <h2>No image available!</h2>
+  }
+  ```
+
 
 
 ⏭️ Resume at https://angular-university.io/lesson/angular-beginners-whats-next-ngfor

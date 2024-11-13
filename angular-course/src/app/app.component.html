@@ -7,18 +7,18 @@
   </div>
 
   <div class="courses">
-    @for (course of courses; track course.id; let first = $first; let last = $last; let even = $even; let odd = $odd){
+    <course-card *ngFor="let course of courses; index as i;"
+    [class.is-first]="$first"
+    [course]="course"
+    (courseSelected)="courseSelected($event)"
+    [index]="i + 1"
+  ></course-card>
 
-    <h1>Total count: {{ $count }}</h1>
-    <h1>First: {{ first }}</h1>
-    <h1>Last: {{ last }}</h1>
+    @for (course of courses; track course.id;){
     <course-card
+      [class.is-first]="$first"
       [course]="course"
       [index]="$index"
-      [class.is-first]="first"
-      [class.is-last]="last"
-      [class.is-even]="even"
-      [class.is-odd]="odd"
       (courseSelected)="courseSelected($event)"
     ></course-card>
     }
