@@ -228,4 +228,4 @@ More advanced:
   ```
 
 
-⏭️ Resume at xxx
+⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-ngclass)
