@@ -189,21 +189,39 @@ Comparison:
   ```
 
 
-#### [ngClass]
+#### class vs [ngClass] vs [ngStyle]
+
+- Most of the time we want to style our components with plain css classes. ergo class="".
+- [ngClass] is used for conditionally adding/removing classes and should be used _a lot_ more than [ngStyle].
+    - Typically we only want to use ngClass for *css state classes* that indicate the prescence of a state in the component.
+- [ngStyle] is used for *data dependant content* e.g. the background image property in the below example. 
+
+
+##### [ngClass]
 
 🔗 https://angular.dev/api/common/NgClass?tab=description
 
 Adds and removes CSS classes (styles) on an HTML element, depending on the content of the data.
-Not meant to replace the class="" property, so if the styles are constant do use this.
+Not meant to replace the class="" property, so if the styles are *constant* do use class. Whereas if the style
+is *conditional*, use ngClass.
 
-Basic:
+_Basic_
 
 ```html
 <div class="course-card" *ngIf="course"
   [ngClass]="beginner">
 ```
 
-More advanced:
+_More advanced_
+
+We can pass in properties and define them in the object:
+
+```html
+<div class="course-card" *ngIf="course"
+  [ngClass]="{'beginner': false, 'course-card': true}">
+```
+
+We can pass in a function. This is the *recommended* approached as it keeps the template readable:
 
 ```html
 <div class="course-card" [ngClass]="cardClasses()">
@@ -227,5 +245,78 @@ More advanced:
   }
   ```
 
+##### [ngStyle]
 
-⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-ngclass)
+🔗 https://angular.dev/api/common/NgStyle
+
+For a single style, the direct style directive can be used e.g.
+
+```html
+<div class="course-card" [style.text-decoration]="'underline'">
+```
+
+However, for multiple styles this is where ngStyle comes in useful. [ngStyle] takes an object of style properties.
+
+
+```html
+<div class="course-card" [ngStyle]="{'text-decoration': 'underline'}">
+```
+
+And same as [ngClass], we can return a function with the styles defined
+
+```html
+<div class="course-card" [ngStyle]="cardStyles()">
+```
+
+```ts
+  cardStyles() {
+    return {
+      'background-image': 'url(' + this.course.iconUrl + ')',
+      'text-decoration': 'underline',
+    }
+  }
+```
+
+#### [@switch]
+
+🔗 https://angular.dev/api/core/@switch
+
+
+Very intuitive and easy to reason about. 
+
+- Switch directive wraps around
+    - case for the scenario
+    - default as the fallback
+
+```html
+  <div class="course-category">
+    @switch(course.category){ 
+      @case ("BEGINNER"){
+      <div class="category">Beginner</div>
+      } @case ("INTERMEDIATE"){
+      <div class="category">Intermediate</div>
+      } @case ("ADVANCED"){
+      <div class="category">Advanced</div>
+      } @default{
+      <div class="category">Unknown</div>
+      } 
+    }
+  </div>
+```
+
+##### [ngSwitch]
+
+This is the predecessor to @switch.
+
+```html
+  <div class="course-category" [ngSwitch]="course.category">
+    <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+    <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+    <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+    <div class="category" *ngSwitchDefault>Unknown</div>
+  </div>
+  ```
+  
+⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-pipes)
+
+

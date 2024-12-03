@@ -29,4 +29,11 @@ export class CourseCardComponent {
       return ['beginner'] // We can also return the string directly
     }
   }
+
+  cardStyles() {
+    return {
+      'background-image': 'url(' + this.course.iconUrl + ')',
+      'text-decoration': 'underline',
+    }
+  }
 }
