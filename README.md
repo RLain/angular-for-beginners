@@ -317,8 +317,6 @@ This is the predecessor to @switch.
   </div>
   ```
   
-⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-pipes)
-
 ### Pipes
 
 A pipe is a template mechanism to transform data.
@@ -411,3 +409,5 @@ So 0 and 1 are included:
     }
   </div>
 ```
+
+⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-injectable-services)
