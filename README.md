@@ -319,4 +319,95 @@ This is the predecessor to @switch.
   
 ⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-pipes)
 
+### Pipes
 
+A pipe is a template mechanism to transform data.
+
+The pipe is literally the | syntax. 
+
+
+#### date pipes
+
+
+The following is an example of formatting the startDate into the date format.
+
+```ts
+  startDate = new Date(2000, 0, 1)
+```
+
+```html
+  <div class="demo">
+          <div>Start Date: {{startDate | date}}</div>
+  </div>
+
+    <div class="demo">
+          <div>Start Date: {{startDate | date: 'MM/dd/yyyy'}}</div>
+  </div>
+```
+
+#### string formatting pipes
+
+- uppercase
+- lowercase
+- titlecase
+
+```ts
+  title = COURSES[0].description
+```
+
+```html
+    <div>Title: {{title | uppercase}}</div>
+    <div>Title: {{title | lowercase}}</div>
+    <div>Title: {{title | titlecase}}</div>
+```
+
+### number formatting pipes
+
+- number
+- currency
+- percent
+
+```ts
+  price=9.99
+```
+
+```html
+    <div>Price: {{price | number: '3.3-5'}}</div>
+    <div>Price: {{price | currency: 'GBP'}}</div>
+    <div>Percentage: {{rate | percent }}</div>
+```
+
+### Array & Object pipes
+
+- slice
+- json
+- keyvalue
+
+The following shows how to only include the first two elements in the array. 
+0 is the start
+2 is the end
+
+So 0 and 1 are included:
+
+```html
+   @for (course of courses | slice: 0:2; track course.id;){
+    <course-card
+      [class.is-first]="$first"
+      [course]="course"
+      [index]="$index"
+      (courseSelected)="courseSelected($event)"
+    ></course-card>
+    }
+    @empty{
+      <h1>No courses exist</h1>
+    }
+   <!--json example -->
+     {{courses | json }}
+
+   <!--keyvalue example -->
+       <div>
+    @for (pair of course | keyvalue; track pair.key;){
+      {{pair.key + ': ' + pair.value}}
+    }
+  </div>
+```
