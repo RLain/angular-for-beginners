@@ -410,4 +410,73 @@ So 0 and 1 are included:
   </div>
 ```
 
-⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-injectable-services)
+ℹ️ At this point, we moved to /angular-course-services. Everything above is focused on the View.
+
+#### AsyncPipe
+
+Allows you to build your components in a more reactive way.
+
+How it differs from other pipes:
+1. Behavior: Unlike other pipes (e.g., date, uppercase), which are stateless and transform static data, AsyncPipe works with continuously changing data streams.
+2. Lifecycle Management: It handles subscription and cleanup, so you don't need to manually call .subscribe() or handle memory leaks.
+
+In Angular, an Observable is a feature provided by the RxJS (Reactive Extensions for JavaScript) library, which is used to handle asynchronous data streams. Observables allow you to define a data source and perform operations like filtering, transforming, or combining the data over time.
+
+Examples of observables
+
+```ts
+// HTTP Requests: The HttpClient service returns observables for handling data from APIs.
+this.http.get('https://api.example.com/data').subscribe(data => console.log(data));
+
+//Forms and Events: Observables can be used with reactive forms or DOM events.
+this.form.valueChanges.subscribe(value => console.log(value));
+
+//Routing: The ActivatedRoute service provides observables for route parameters.
+this.route.params.subscribe(params => console.log(params.id));
+```
+
+______
+
+## Clients
+
+### HTTP Client
+
+🔗 https://angular.dev/guide/http
+
+Angular provides a client HTTP API for Angular applications, the HttpClient service class in @angular/common/http.
+
+Example of using the GET method
+
+```ts
+ ngOnInit() {
+    const params = new HttpParams().set("page", "1").set("pageSize", "10");
+
+    this.http
+      .get("/api/courses", {params})
+      .subscribe((courses) => (this.courses = courses));
+  }
+```
+
+______
+
+## Clients
+
+
+## Lifecycle hooks
+
+### OnInit & ngOnInit()
+
+🔗 https://angular.dev/api/core/OnInit/
+
+It is invoked only _once_ when the directive is instantiated, after Angular has initialized all data-bound properties of the directive.
+
+
+
+
+
+
+
+
+
+⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-async-pipe)
+and reminder to head up to the AsyncPipe section
