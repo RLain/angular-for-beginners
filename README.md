@@ -414,11 +414,45 @@ So 0 and 1 are included:
 
 #### AsyncPipe
 
+This is denoated by -> | async.
+
 Allows you to build your components in a more reactive way.
 
 How it differs from other pipes:
 1. Behavior: Unlike other pipes (e.g., date, uppercase), which are stateless and transform static data, AsyncPipe works with continuously changing data streams.
 2. Lifecycle Management: It handles subscription and cleanup, so you don't need to manually call .subscribe() or handle memory leaks.
+
+```html
+  <div class="courses">
+    @for(course of courses$ | async; track course){
+    <course-card [course]="course">
+      <course-image [src]="course.iconUrl"></course-image>
+    </course-card>
+  }
+  </div>
+```
+```ts
+import { AsyncPipe, CommonModule, NgForOf } from "@angular/common";
+import { HttpClient, HttpParams } from "@angular/common/http";
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+  imports: [AsyncPipe, CourseCardComponent, CourseImageComponent, NgForOf],
+})
+export class AppComponent implements OnInit {
+  courses$: Observable<Course[]>;
+
+
+  ngOnInit() {
+    const params = new HttpParams().set("page", "1").set("pageSize", "10");
+
+    this.courses$ = this.http.get<Course[]>("/api/courses", {params})
+  }  
+```
+
+##### Observable
 
 In Angular, an Observable is a feature provided by the RxJS (Reactive Extensions for JavaScript) library, which is used to handle asynchronous data streams. Observables allow you to define a data source and perform operations like filtering, transforming, or combining the data over time.
 
@@ -434,6 +468,8 @@ this.form.valueChanges.subscribe(value => console.log(value));
 //Routing: The ActivatedRoute service provides observables for route parameters.
 this.route.params.subscribe(params => console.log(params.id));
 ```
+
+Read more on Observables below.
 
 ______
 
@@ -459,9 +495,6 @@ Example of using the GET method
 
 ______
 
-## Clients
-
-
 ## Lifecycle hooks
 
 ### OnInit & ngOnInit()
@@ -470,13 +503,47 @@ ______
 
 It is invoked only _once_ when the directive is instantiated, after Angular has initialized all data-bound properties of the directive.
 
+______
+
+## Services
+
+$ ng generate nameOfService services/nameOfDir
 
 
 
 
+______
+
+## Observables in Angular
+
+🔗 https://medium.com/@lquocnam/a-comprehensive-guide-to-angular-observables-bde5542346fc
+
+Observables are an essential part of reactive programming, a programming paradigm that emphasizes the propagation of change through streams of data. Observables allow developers to handle asynchronous data and events more streamlined and efficient than traditional techniques like callbacks or promises.
+
+Angular makes use of observables as an interface to handle a variety of common asynchronous operations. For example:
+
+- The HTTP module uses observables to handle AJAX requests and responses
+- The Router and Forms modules use observables to listen for and respond to user-input events
+
+### RxJS
+
+RxJS is a popular library for working with Observables in Angular and provides a wide range of operators for creating, transforming, and combining Observables.
+
+### RxJs operators
+
+Operators are functions that allow you to transform or manipulate Observables in various ways and are a crucial feature of working
+with observables in Angular.
+
+- `map()`: The map() operator transforms each value emitted by an Observable by applying a function to it. 
+- `filter()`: The filter() operator filters out values emitted by an Observable that do not meet a specified condition. 
+- `merge()`: The merge() operator combines multiple Observables into a single stream of values.
+
+### Subscribing to Observables
+
+To consume data emitted by an Observable, you need to subscribe to it. Subscribing to an Observable is similar to registering an event listener and allows you to receive and handle values emitted by the Observable. 
+
+It’s also important to remember to **unsubscribe** from Observables when you’re finished with them, to prevent memory leaks and other issues.
 
 
 
-
-⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-async-pipe)
-and reminder to head up to the AsyncPipe section
+⏭️ Resume at [angular-university.io](https://angular-university.io/lesson/angular-beginners-injectable-decorator)
