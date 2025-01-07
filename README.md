@@ -507,7 +507,25 @@ ______
 
 ## Services
 
-$ ng generate nameOfService services/nameOfDir
+We can create then inject custom services into our components. Start by using the following:
+
+$ ng generate service services/nameOfComponent e.g. ng generate service services/courses will create courses.service.ts
+
+This creates a plain class using the Injectable decorator. This makes it an *Injectable service* which is compatiable with the *dependancy injection system*.
+
+```ts
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CoursesService {
+
+  constructor() { }
+}
+```
+
+ℹ️ Creating an Injectable service in Angular inherently uses the Singleton Pattern when provided at the root level (e.g., providedIn: 'root'). This means the service is instantiated once and shared across the entire application. When the service is injected into the top-level component (e.g., app.component.ts) or any sub-level components (e.g., course-card.component.ts), the same instance is used rather than creating multiple instances. This behavior is referred to as an "application-wide singleton," meaning there is only one instance of the service throughout the application lifecycle.
 
 
 
@@ -531,8 +549,7 @@ RxJS is a popular library for working with Observables in Angular and provides a
 
 ### RxJs operators
 
-Operators are functions that allow you to transform or manipulate Observables in various ways and are a crucial feature of working
-with observables in Angular.
+Operators are functions that allow you to transform or manipulate Observables in various ways and are a crucial feature of working with observables in Angular.
 
 - `map()`: The map() operator transforms each value emitted by an Observable by applying a function to it. 
 - `filter()`: The filter() operator filters out values emitted by an Observable that do not meet a specified condition. 
@@ -542,7 +559,7 @@ with observables in Angular.
 
 To consume data emitted by an Observable, you need to subscribe to it. Subscribing to an Observable is similar to registering an event listener and allows you to receive and handle values emitted by the Observable. 
 
-It’s also important to remember to **unsubscribe** from Observables when you’re finished with them, to prevent memory leaks and other issues.
+🚨 It’s also important to remember to **unsubscribe** from Observables when you’re finished with them, to prevent memory leaks and other issues.
 
 
 
